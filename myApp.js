@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/json', function (req, res) {
-    req.message_style({ "message": "Hello json" })
+    res.message_style({ "message": "Hello json" })
 });
 
 
