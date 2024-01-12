@@ -2,6 +2,14 @@ let express = require('express');
 require('dotenv').config()
 let app = express();
 
+
+app.use(function middleware(req, res, next) {
+
+    var string = req.method + " " + req.path + " - " + req.ip;
+    console.log(string)
+    next();
+});
+
 app.use("/public", express.static(__dirname + "/public"));
 
 
@@ -23,13 +31,6 @@ app.get('/json', function (req, res) {
     res.json({ "message": msg });
 });
 
-app.use(function middleware(req, res, next) {
-
-    var string = req.method + " " + req.path + " - " + req.ip;
-    console.log(string)
-    next();
-    res.string;
-});
 
 
 
