@@ -25,7 +25,11 @@ app.get("/now", (req, res, next) => {
     res.json({ time: req.string });
 }
 );
-
+app.post("/name", function (req, res) {
+    
+    var string = req.body.first + " " + req.body.last;
+    res.json({ name: string });
+});
 app.get("/:word/echo", (req, res) => {
     res.json({ "echo": req.params.word });
 });
