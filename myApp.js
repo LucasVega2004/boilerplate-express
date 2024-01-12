@@ -1,7 +1,11 @@
 let express = require('express');
 require('dotenv').config()
 let app = express();
+var bodyParser = require("body-parser");
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 
 app.use(function middleware(req, res, next) {
 
@@ -25,7 +29,7 @@ app.get("/now", (req, res, next) => {
 app.get("/:word/echo", (req, res) => {
     res.json({ "echo": req.params.word });
 });
-app.get("/name",(req,res)=>{
+app.get("/name", (req, res) => {
     res.json({ "name": req.query.first + " " + req.query.last });
 });
 app.use("/public", express.static(__dirname + "/public"));
