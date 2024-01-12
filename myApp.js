@@ -14,17 +14,21 @@ app.get('/json', function (req, res) {
 
     let msg
 
-    if(msgStyle==="uppercase"){
-        msg="Hello json".toUpperCase();
-    }else{
-        msg="Hello json";
+    if (msgStyle === "uppercase") {
+        msg = "Hello json".toUpperCase();
+    } else {
+        msg = "Hello json";
     }
 
-    res.json({"message" : msg});
+    res.json({ "message": msg });
 });
 
+app.use(function middleware(req, res, next) {
 
-
+    var string = req.method + " " + req.path + " - " + req.ip;
+    console.log(string)
+    next();
+});
 
 
 
