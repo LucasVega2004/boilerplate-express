@@ -10,22 +10,24 @@ app.use(function middleware(req, res, next) {
     next();
 });
 
-app.get("/now",(req, res, next) => {
-        // adding a new property to req object
-        // in the middleware function
-        req.string = new Date().toString();
-        next();
-    },(req, res) => {
-        // accessing the newly added property
-        // in the main function
-        res.json({time:req.string});
-    }
+app.get("/now", (req, res, next) => {
+    // adding a new property to req object
+    // in the middleware function
+    req.string = new Date().toString();
+    next();
+}, (req, res) => {
+    // accessing the newly added property
+    // in the main function
+    res.json({ time: req.string });
+}
 );
 
-app.get("/:word/echo",(req,res)=>{
-    res.json({"echo" : req.params.word});
+app.get("/:word/echo", (req, res) => {
+    res.json({ "echo": req.params.word });
 });
-
+app.get("/name?first=firstname&last=lastname",(req,res)=>{
+    res.json({ "name": req.params.first + " " + req.params.last });
+});
 app.use("/public", express.static(__dirname + "/public"));
 
 
