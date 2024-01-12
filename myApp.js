@@ -10,6 +10,18 @@ app.use(function middleware(req, res, next) {
     next();
 });
 
+app.get("/now",(req, res, next) => {
+        // adding a new property to req object
+        // in the middleware function
+        req.string = new Date().toString();
+        next();
+    },(req, res) => {
+        // accessing the newly added property
+        // in the main function
+        res.send(req.string);
+    }
+);
+
 app.use("/public", express.static(__dirname + "/public"));
 
 
