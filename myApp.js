@@ -25,8 +25,8 @@ app.get("/now", (req, res, next) => {
 app.get("/:word/echo", (req, res) => {
     res.json({ "echo": req.params.word });
 });
-app.get("/name?first=firstname&last=lastname",(req,res)=>{
-    res.json({ "name": req.params.first + " " + req.params.last });
+app.get("/name",(req,res)=>{
+    res.json({ "name": req.query.first + " " + req.query.last });
 });
 app.use("/public", express.static(__dirname + "/public"));
 
