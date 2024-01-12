@@ -18,7 +18,7 @@ app.get("/now",(req, res, next) => {
     },(req, res) => {
         // accessing the newly added property
         // in the main function
-        res.send(req.string);
+        res.json({time:req.string});
     }
 );
 
